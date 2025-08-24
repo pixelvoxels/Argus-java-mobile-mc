@@ -1,0 +1,27 @@
+name: build-argus-shim
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  shim:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Build shim
+        uses: gradle/gradle-build-action@v3
+        with:
+          gradle-version: 8.8
+          arguments: build
+          build-root-directory: shim/argus_input_shim_fabric
+      - name: Upload JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: argus-input-shim-jar
+          path: shim/argus_input_shim_fabric/build/libs/*.jar

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "argus_input_shim",
+  "version": "${version}",
+  "name": "Argus Input Shim",
+  "description": "Polls Argus native input queue over JNI and injects into Minecraft.",
+  "environment": "client",
+  "entrypoints": {
+    "client": [ "com.argus.input.ArgusInputShim" ]
+  },
+  "depends": {
+    "fabricloader": ">=0.14.21",
+    "minecraft": ">=1.20",
+    "fabric-api": "*"
+  },
+  "license": "LGPL-3.0",
+  "contact": {
+    "sources": "https://github.com/your-username/Argus-java-mobile-mc"
+  }
+}
